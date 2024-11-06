@@ -6,15 +6,28 @@ def addStudent(my_list):
     my_list.append(student)
 
 
-def filterMajor(my_list, major):
-    pass
+def filterMajor(my_list, target):
+    filteredMajors = []
+    for student in my_list:
+        major = student[1]
+        if major == target:
+            filteredMajors.append(student)
+    return filteredMajors
 
 
 def calcGPAaverage(my_list):
-    pass
+    total = 0
+    for student in my_list:
+        gpa = student[2]
+        total += gpa
+    average = total / len(my_list)
+    return average
 
-def findStudent(my_list):
-    pass
+def findStudent(my_list, name):
+    for student in my_list:
+        student_name = student[0]
+        if student_name == name:
+            return student
 
 
 def printStudent(student):
@@ -40,17 +53,19 @@ if __name__ == "__main__":
         print("3 for find average GPA.")
         print("4 to see a specific student.")
         print("0 to quit.")
-        input = int(input(""))
-        if input == 1:
+        response = int(input(""))
+        if response == 1:
             addStudent(studentList)
-        elif input == 2:
+        elif response == 2:
             major = input("What major would you like to filter by? ")
-            filterMajor(studentList, major)
-        elif input == 3:
+            filteredList = filterMajor(studentList, major)
+            print(filteredList)
+        elif response == 3:
             average = calcGPAaverage(studentList)
             print(f"The average GPA is {average}")
-        elif input == 4:
-            student = findStudent(studentList)
+        elif response == 4:
+            name = input("Which student do you want to see? ")
+            student = findStudent(studentList, name)
             printStudent(student)
-        elif input == 0:
+        elif response == 0:
             running = False
