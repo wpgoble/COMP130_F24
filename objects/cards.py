@@ -62,5 +62,5 @@ if __name__ == "__main__":
     my_hand = []
     for i in range(2):
         my_hand.append(my_deck.draw())
-    
+    print("Hello from card class")
     print(my_hand)
