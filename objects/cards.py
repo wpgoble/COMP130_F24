@@ -34,15 +34,22 @@ class Deck:
         face_cards = ["J", "Q", "K", "A"]
         suits = ["♥", "♣", "♠", "♦"]
         for suit in suits:
+            # First let's add the numerical cards
             for i in range(2, 11):
                 temp_card = Card(suit, i)
                 self.deck.append(temp_card)
+            # Then we'll add the face cards
             for face in face_cards:
                 temp_card = Card(suit, face)
                 self.deck.append(temp_card)
-        self.shuffle()
+
+        self.shuffle()  # Now that we have a deck, let's first shuffle it
 
     def shuffle(self) -> None:
+        """shuffle the deck
+        An easy way to shuffle a deck of cards is to iterate through the deck
+        and pick a random index and just swap these two cards.
+        """
         for i in range(len(self.deck)):
             index = random.randint(0, len(self.deck)-1)
             self.deck[i] = self.deck[index]
